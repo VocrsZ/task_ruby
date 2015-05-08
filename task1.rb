@@ -12,10 +12,8 @@ result_hash = Hash.new(0)
 result = (a << b)
   .flatten!
   .compact!
+  .grep(/^\d$/)
   .sort!
-result.delete_if do |el|
-  true unless el.is_a? Numeric
-end
 
 # Отбираем только уникальные значения
 unique = result.uniq
