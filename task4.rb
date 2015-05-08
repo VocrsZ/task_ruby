@@ -44,7 +44,8 @@ def mixer(arr1, arr2)
   [arr1, arr2]
 end
 
-task1 = receiver 696
+input_string = gets
+task1 = receiver(input_string.to_i)
 
 task1[1], task1[2] = mixer(task1[1], task1[2])
 task1[4], task1[5] = mixer(task1[4], task1[5])
