@@ -9,17 +9,13 @@ result_hash = Hash.new(0)
 
 # Сплющиваем, убираем nil-ы, чистим от некорректных значений, считаем количество элементов с ошибками, сортируем
 # Если введенное значение - не цифра (Numeric), добавляем в хэш +1 к ключу :error
-result = (a << b) .flatten!
-         .compact!
-         .delete_if do |el|
-  begin
-    fail ArgumentError unless el.is_a? Numeric
-  rescue ArgumentError
-    result_hash[:error] += 1
-    true
-  end
+result = (a << b)
+  .flatten!
+  .compact!
+  .sort!
+result.delete_if do |el|
+  true unless el.is_a? Numeric
 end
-         .sort!
 
 # Отбираем только уникальные значения
 unique = result.uniq
